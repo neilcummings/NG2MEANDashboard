@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../_services/user.service';
-import {User} from '../_models/user';
 
 @Component({
   selector: 'app-secure',
@@ -8,14 +6,12 @@ import {User} from '../_models/user';
   styleUrls: ['./secure.component.css']
 })
 export class SecureComponent implements OnInit {
-  users: User[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor() {
+
+  }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(users => {
-      this.users = users;
-    })
   }
 
 }

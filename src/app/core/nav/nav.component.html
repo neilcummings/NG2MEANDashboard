@@ -12,9 +12,9 @@
   <!-- Top Menu Items -->
 
   <!--if authenticated-->
-  <ul class="nav navbar-right top-nav" *ngIf="auth.isAuthenticated">
+  <ul class="nav navbar-right top-nav" *ngIf="auth.isAuthenticated()">
     <li class="dropdown" dropdown>
-      <a href dropdownToggle class="dropdown-toggle" (click)="false"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+      <a href dropdownToggle class="dropdown-toggle" (click)="false"><i class="fa fa-user"></i> {{auth.currentUser.firstName}} {{auth.currentUser.lastName}}<b class="caret"></b></a>
       <ul *dropdownMenu class="dropdown-menu" role="menu">
         <li role="menuitem">
           <a class="dropdown-item" href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -35,7 +35,7 @@
 
   <!--if not auth-->
 
-  <ul class="nav navbar-right top-nav" *ngIf="!auth.isAuthenticated">
+  <ul class="nav navbar-right top-nav" *ngIf="!auth.isAuthenticated()">
     <li>
       <a [routerLink]="['/signup']">Sign Up</a>
     </li>
@@ -47,7 +47,7 @@
         <div class="form-group">
           <input type="password" class="form-control" name="password" placeholder="Password" (ngModel)="password">
         </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
+        <button class="btn btn-primary">Sign In</button>
       </form>
     </li>
   </ul>
@@ -64,8 +64,11 @@
       <li routerLinkActive="active">
         <a [routerLink]="['/tables']" ><i class="fa fa-fw fa-table"></i> Tables</a>
       </li>
-      <li routerLinkActive="active" *ngIf="auth.isAuthenticated">
+      <li routerLinkActive="active" *ngIf="auth.isAuthenticated()">
         <a [routerLink]="['/secure']" ><i class="fa fa-fw fa-lock"></i> Secure Area</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin">
+        <a [routerLink]="['/admin']" ><i class="fa fa-fw fa-users"></i> Admin Area</a>
       </li>
       <li>
         <a class="dropdown-toggle" (click)="toggleState()" style="cursor: pointer"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>

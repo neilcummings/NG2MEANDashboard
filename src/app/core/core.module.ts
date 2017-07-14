@@ -5,11 +5,7 @@ import {appRoutes} from '../routes';
 import {RouterModule} from '@angular/router';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {FormsModule} from '@angular/forms';
-import {AuthenticationService} from '../_services/authentication.service';
 import {UserService} from '../_services/user.service';
-import {fakeBackendProvider} from '../_helpers/fake-backend';
-import {MockBackend} from '@angular/http/testing';
-import {BaseRequestOptions} from '@angular/http';
 
 @NgModule({
   imports: [
@@ -24,10 +20,7 @@ import {BaseRequestOptions} from '@angular/http';
     RouterModule
   ],
   providers: [
-    AuthenticationService,
-    UserService,
-
-
+    UserService
   ]
 })
 

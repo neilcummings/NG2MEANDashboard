@@ -21,14 +21,15 @@ export class NavComponent implements OnInit {
   }
 
   login(formvalues) {
+    console.log(formvalues);
     this.auth.login(formvalues.username, formvalues.password)
       .subscribe(result => {
         if(result === true) {
           // login successful
-          this.auth.isAuthenticated = true;
+          console.log('login success');
         } else {
           // login failed
-          this.auth.isAuthenticated = false;
+          console.log('login failed');
         }
       });
   }
